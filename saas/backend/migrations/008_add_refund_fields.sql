@@ -1,0 +1,2 @@
+ALTER TABLE orders ADD COLUMN refund_quantity INTEGER DEFAULT 0;
+ALTER TABLE orders ADD COLUMN refund_amount REAL DEFAULT 0;
