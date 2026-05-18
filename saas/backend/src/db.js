@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { DatabaseSync } from 'node:sqlite'
+import Database from 'better-sqlite3'
 import { config } from './config.js'
 
 function ensureDir(filePath) {
@@ -10,9 +10,9 @@ function ensureDir(filePath) {
 
 export function openDb() {
   ensureDir(config.dbPath)
-  const db = new DatabaseSync(config.dbPath)
-  db.exec('PRAGMA journal_mode=WAL;')
-  db.exec('PRAGMA foreign_keys=ON;')
+  const db = new Database(config.dbPath)
+  db.pragma('journal_mode=WAL;')
+  db.pragma('foreign_keys=ON;')
   return db
 }
 
